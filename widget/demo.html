@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Widget de Chat</title>
+    
+    <!-- 
+    ===========================================
+    PÁGINA DE DEMOSTRACIÓN DEL WIDGET
+    ===========================================
+    
+    Esta página simula la web de un cliente.
+    Sirve para probar que el widget funciona correctamente.
+    
+    En producción, tus clientes solo necesitan añadir
+    el <script> al final de su página.
+    -->
+    
+    <style>
+        /* Estilos básicos para la demo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content section */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        
+        .content p {
+            margin-bottom: 16px;
+            color: #4a5568;
+        }
+        
+        /* Info box */
+        .info-box {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        /* Code block */
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .code-block code {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🏪 Mi Negocio Demo</h1>
+        <p>
+            Esta es una página de ejemplo que simula la web de un cliente.
+            ¡Mira el botón de chat abajo a la derecha!
+        </p>
+    </section>
+    
+    <!-- Content Section -->
+    <section class="content">
+        <h2>¿Cómo funciona?</h2>
+        <p>
+            El widget de chat aparece automáticamente en la esquina inferior derecha.
+            Cuando el usuario hace clic, se abre una ventana de chat donde puede
+            hacer preguntas y recibir respuestas instantáneas.
+        </p>
+        
+        <div class="info-box">
+            <h3>💡 Para probar el widget:</h3>
+            <ol>
+                <li>Asegúrate de que tu API esté corriendo en <code>http://127.0.0.1:8000</code></li>
+                <li>Haz clic en el botón azul 💬 abajo a la derecha</li>
+                <li>Escribe un mensaje y presiona Enter o "Enviar"</li>
+                <li>¡Observa cómo el chatbot responde!</li>
+            </ol>
+        </div>
+        
+        <h2>Integración para clientes</h2>
+        <p>
+            Tus clientes solo necesitan añadir este código antes del cierre de <code>&lt;/body&gt;</code>:
+        </p>
+        
+        <div class="code-block">
+            <code>
+&lt;script src="https://tu-dominio.com/static/widget.js"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+&nbsp;&nbsp;ChatWidget.init({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;apiUrl: 'https://tu-api.com',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;businessId: 'id-del-cliente',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: '💬 Soporte Mi Negocio',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;welcomeMessage: '¡Hola! ¿En qué puedo ayudarte?'<br>
+&nbsp;&nbsp;});<br>
+&lt;/script&gt;
+            </code>
+        </div>
+        
+        <h2>Características</h2>
+        <p>
+            ✅ Botón flotante que no molesta<br>
+            ✅ Diseño responsive (funciona en móviles)<br>
+            ✅ Indicador de "escribiendo..."<br>
+            ✅ Historial de conversación<br>
+            ✅ Personalizable (colores, textos)<br>
+            ✅ Fácil de instalar (un solo script)
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Demo del Widget de Chat - Chatbot Soporte 24/7</p>
+    </footer>
+    
+    <!-- 
+    ===========================================
+    AQUÍ VA EL WIDGET
+    ===========================================
+    Esto es TODO lo que tus clientes necesitan añadir
+    -->
+    
+    <!-- Cargar el CSS directamente (para demo local) -->
+    <link rel="stylesheet" href="widget.css">
+    
+    <!-- Cargar el JavaScript del widget -->
+    <script src="widget.js"></script>
+    
+    <!-- Inicializar el widget con configuración personalizada -->
+    <script>
+        ChatWidget.init({
+            // URL de tu API (cambiar en producción)
+            apiUrl: 'http://127.0.0.1:8000',
+            
+            // ID del negocio (null por ahora, se usará con RAG)
+            businessId: null,
+            
+            // Personalización
+            title: '💬 Soporte 24/7',
+            welcomeMessage: '¡Hola! 👋 Soy el asistente virtual. ¿En qué puedo ayudarte hoy?',
+            placeholder: 'Escribe tu pregunta...'
+        });
+    </script>
+</body>
+</html>

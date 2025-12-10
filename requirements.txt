@@ -1,2 +1,13 @@
+# Core
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic-settings>=2.0.0
+
+# LLM
 openai>=1.0.0
+
+# Env
 python-dotenv>=1.0.0
+
+# Próximamente (RAG)
+# chromadb>=0.4.0
